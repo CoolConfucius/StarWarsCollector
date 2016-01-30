@@ -29,8 +29,6 @@ function addCharacter() {
 }
 
 function removeCharacter() {
-  console.log("Remove Character");
-  // var name = $('#name').text();  
   var _id = $(this).data('_id'); 
 
   $.ajax({

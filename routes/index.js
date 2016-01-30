@@ -10,12 +10,10 @@ router.get('/', authMiddleware, function(req, res, next) {
 });
 
 router.get('/login', function(req, res, next) {
-  // res.render('login');
   res.render('form', {state: 'login', title: "Login"});
 });
 
 router.get('/register', function(req, res, next) {
-  // res.render('register');
   res.render('form', {state: 'register', title: "Register"});
 });
 
