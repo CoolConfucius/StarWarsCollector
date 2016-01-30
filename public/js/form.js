@@ -11,6 +11,9 @@ $(function() {
     obj.state = $go.hasClass('register') ? 'register' : 'login';
   }
   
+  if (obj.state === 'login') {
+    $('#forgot').click(resetpassword); 
+  };
   $('form').on('submit', go);
 });
 
@@ -40,4 +43,23 @@ function go(e) {
     alert('Error.  Check console.');
     console.log('err:', err);
   });
+}
+
+function resetpassword(e) {
+  e.preventDefault();
+  obj.email = $('#email').val();
+  if (!obj.email) {
+    alert("Enter your email first"); 
+    return; 
+  };
+  $.post('/users/resetpassword', {email: obj.email})
+  .success(function() {
+    location.href = '/login';
+  })
+  .fail(function(err) {
+    alert('Error.  Check console.');
+    console.log('err:', err);
+  });
+
+
 }

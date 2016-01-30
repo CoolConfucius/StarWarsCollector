@@ -4,7 +4,7 @@ block content
   .jumbotron
     h1.text-center Welcome to #{title}
   if user
-    h1.text-center= "Logged in as" + user.email
+    h1.text-center= "Logged in as: " + user.email
     
 
     a.btn.btn-danger(href='/users/changepassword') Change password

@@ -71,6 +71,25 @@ router.post('/changepassword', function(req, res, next) {
   });
 });
 
+router.post('/resetpassword', function(req, res, next) {
+  ref.resetPassword({
+    email: req.body.email
+  }, function(error) {
+    if (error) {
+      switch (error.code) {
+        case "INVALID_USER":
+          console.log("The specified user account does not exist.");
+          break;
+        default:
+          console.log("Error resetting password:", error);
+      }
+    } else {
+      console.log("Password reset email sent successfully!");
+    }
+  });
+});
+
+
 
 
 router.get('/logout', function(req, res, next) {

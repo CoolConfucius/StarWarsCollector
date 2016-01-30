@@ -19,11 +19,13 @@ block content
         input#newpassword.password.form-control(type='password', placeholder='Password')
 
     if state === 'register'
-      button.btn.btn-default.register#go(type='submit') Register
+      button.btn.btn-info.register#go(type='submit') Register
     else if state === 'login'
-      button.btn.btn-default.login#go(type='submit') Login
+      button.btn.btn-info.login#go(type='submit') Login
+      hr
+      button.btn.btn-warning#forgot Forgot Password
     else if state === 'changepassword'
-      button.btn.btn-default.changepassword#go(type='submit') Change Password
+      button.btn.btn-success.changepassword#go(type='submit') Change Password
 
 block scripts
   script(src="/js/form.js")
