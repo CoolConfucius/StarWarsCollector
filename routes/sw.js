@@ -6,12 +6,9 @@ var authMiddleware = require('../config/auth');
 var User = require('../models/user');
 var Character = require('../models/character');
 
-var next; 
-var everyone = []; 
 
 router.use(authMiddleware);
 
-/* GET home page. */
 router.get('/people/:page', function(req, res, next) {
   // show sw by page
   var swPeople = 'http://swapi.co/api/people/?page=' + req.params.page;
@@ -54,23 +51,10 @@ router.get('/person/:num', function(req, res, next) {
 });
 
 
-// add sw to user
-// router.post('/add', function(req, res) {
-//   console.log("req.user", req.user);
-
-//   var character = new Character(req.body); 
-//   console.log("character: ", character);
-//   character.save(function(err, savedCharacter) {
-//     res.status(err ? 400 : 200).send(err || savedCharacter);
-//   });
-// });
-
 router.put('/add', function(req, res) {
   User.findById(req.user._id, function(err, user) {
     var character = new Character(req.body); 
-    // character.save(function(err, savedCharacter) {
-    //   res.status(err ? 400 : 200).send(err || savedCharacter);
-    // });
+
     user.swchars.push(character);
     user.save(function(err, savedUser) {
       res.status(err ? 400 : 200).send(err || savedUser); 
@@ -87,7 +71,7 @@ router.put('/remove', function(req, res) {
         splice_index = index; 
       };
     });
-    if (splice_index) {
+    if (splice_index || splice_index === 0) {
       user.swchars.splice(splice_index, 1); 
     };
     user.save(function(err, savedUser) {
@@ -129,9 +113,6 @@ function film(array){
     return title; 
   });
 }
-
-
-
 
 
 

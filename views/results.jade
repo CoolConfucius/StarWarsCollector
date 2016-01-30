@@ -7,7 +7,7 @@ block content
     ul
       each person in people
         li
-          a(href='/sw/person/'+person.url.split('/')[5])= person.name
+          a.swchar(href='/sw/person/'+person.url.split('/')[5])= person.name
   
   if state === "person"
     .jumbotron
