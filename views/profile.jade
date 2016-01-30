@@ -3,17 +3,14 @@ extends layout
 block content
   h1= useruid
   h1= user_id
-  h1= pokemon[0]
   h1= email
+  h3= swchars[0]
 
-  a(href='/users/changepassword') Change password
+  a.btn.btn-danger(href='/users/changepassword') Change password
 
-
-
-  a(href='/addChar') add a character
-
-
-  span Star Wars Characters
+  hr
+  h3 Find a Star Wars Character
+  hr
   a.btn.btn-primary(href='/sw/people/1') Page 1
   a.btn.btn-primary(href='/sw/people/2') Page 2
   a.btn.btn-primary(href='/sw/people/3') Page 3

@@ -37,7 +37,7 @@ router.get('/profile', authMiddleware, function(req, res) {
   //// logged in,   req.user
   User.findById(req.user._id, function(err, user) {
     // res.send(user);
-    res.render('profile', { useruid: user.uid, user_id: user._id, pokemon: user.pokemon, email: user.email})
+    res.render('profile', { useruid: user.uid, user_id: user._id, swchars: user.swchars, email: user.email})
   });
 });
 

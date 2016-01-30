@@ -10,7 +10,7 @@ block content
             a(href='/sw/person/'+person.url.split('/')[5])= person.name
   
   if state === "person"
-    h1= person.name
+    h1#name= person.name
     h3= "Homeworld: "+homeworld
     h3 Films stared in: 
       ul
@@ -26,8 +26,8 @@ block content
         li= "birth year: " + person.birth_year 
         li= "gender: " + person.gender
 
-
-  button.btn.btn-default#go(type='submit') Add
+    hr
+    button.btn.btn-success#add(type='submit', data-find=find) Add Character
   hr
   a.btn.btn-primary(href='/sw/people/1') Page 1
   a.btn.btn-primary(href='/sw/people/2') Page 2

@@ -3,6 +3,27 @@ extends layout
 block content
   h1= title
   p Welcome to #{title}
+  if user
+    h1= useruid
+    h1= user_id
+    h1= email
+    if swchars
+      h3= swchars[0]
+
+    a.btn.btn-danger(href='/users/changepassword') Change password
+
+    hr
+    h3 Find a Star Wars Character
+    hr
+    a.btn.btn-primary(href='/sw/people/1') Page 1
+    a.btn.btn-primary(href='/sw/people/2') Page 2
+    a.btn.btn-primary(href='/sw/people/3') Page 3
+    a.btn.btn-primary(href='/sw/people/4') Page 4
+    a.btn.btn-primary(href='/sw/people/5') Page 5
+    a.btn.btn-primary(href='/sw/people/6') Page 6
+    a.btn.btn-primary(href='/sw/people/7') Page 7
+    a.btn.btn-primary(href='/sw/people/8') Page 8
+    a.btn.btn-primary(href='/sw/people/9') Page 9
 
 block scripts
   script(src='/lib/firebase/firebase.js')

@@ -13,7 +13,7 @@ function init() {
   // $category = $('#category'); 
   // $add = $('#add'); 
 
-  // $add.click(addProduct); 
+  $('#add').click(addCharacter); 
   $('#search').click(search); 
 
 }
@@ -30,24 +30,36 @@ function search(){
 
 
 
-// function addProduct() {
-//   console.log("addProduct");
-//   var name = $name.val();
-//   var description = $description.val();
-//   var price = $price.val();
-//   var purchaseBy = $purchaseBy.val();
-//   var imageurl = $imageurl.val();
-//   var category = $category.val();
+function addCharacter() {
+  console.log("addCharacter");
+  var name = $('#name').text(); 
+  var find = $(this).data('find'); 
+  // alert("Find"+ find);
   
-//   $.post('/products', {
-//     name: name, description: description, price: price,
-//     purchaseBy: purchaseBy, imageurl: imageurl, category: category
-//   })
-//   .success(function(data) {
-//     location.replace('/');
-//   })
-//   .fail(function(err) {
-//     alert('Error. Check console.');
-//     console.error("Error:", err);
-//   });
-// }
+  // $.post('/sw/add', {
+  //   name: name, find: find
+  // })
+  // .success(function(data) {
+  //   location.replace('/');
+  // })
+  // .fail(function(err) {
+  //   alert('Error. Check console.');
+  //   console.error("Error:", err);
+  // });
+
+  $.ajax({
+    url: "/sw/add",
+    method: "PUT",
+    data: {
+    name: name, find: find, addedAt: Date.now()
+  }
+  })
+  .success(function(data) {
+    location.replace('/');
+  })
+  .fail(function(err) {
+    alert('Error. Check console.');
+    console.error("Error:", err);
+  });;
+
+}

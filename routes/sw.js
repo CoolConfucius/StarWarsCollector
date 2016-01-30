@@ -3,7 +3,8 @@ var router = express.Router();
 var request = require('request'); 
 
 var authMiddleware = require('../config/auth');
-console.log("swjs");
+var User = require('../models/user');
+var Character = require('../models/character');
 
 var next; 
 var everyone = []; 
@@ -28,7 +29,8 @@ router.get('/people/:page', function(req, res, next) {
 });
 
 router.get('/person/:num', function(req, res, next) {
-  var swPerson = 'http://swapi.co/api/people/' + req.params.num;
+  var find = req.params.num;
+  var swPerson = 'http://swapi.co/api/people/' + find;
   request(swPerson, function( error, response, body) {
     if (!error && response.statusCode === 200) {
       var parsed = JSON.parse(body); 
@@ -42,7 +44,8 @@ router.get('/person/:num', function(req, res, next) {
             films: films, 
             title: "Showing Star Wars character:",
             user: req.user, 
-            state: "person"
+            state: "person", 
+            find: find 
           }); 
         };
       });      
@@ -51,14 +54,32 @@ router.get('/person/:num', function(req, res, next) {
 });
 
 
+// add sw to user
+// router.post('/add', function(req, res) {
+//   console.log("req.user", req.user);
 
+//   var character = new Character(req.body); 
+//   console.log("character: ", character);
+//   character.save(function(err, savedCharacter) {
+//     res.status(err ? 400 : 200).send(err || savedCharacter);
+//   });
+// });
 
-
-
-
-router.post('/', function(req, res, next) {
-  // add sw to user
+router.put('/add', function(req, res) {
+  User.findById(req.user._id, function(err, user) {
+    var character = new Character(req.body); 
+    // character.save(function(err, savedCharacter) {
+    //   res.status(err ? 400 : 200).send(err || savedCharacter);
+    // });
+    user.swchars.push(character);
+    user.save(function(err, savedUser) {
+      res.status(err ? 400 : 200).send(err || savedUser); 
+    });
+  });
 });
+
+
+
 
 
 function film(array){
