@@ -11,8 +11,11 @@ var User = require('../models/user');
 var ref = new Firebase('https://20160128.firebaseio.com/');
 
 router.post('/register', function(req, res, next) {
+  console.log("req.body: ", req.body);
   ref.createUser(req.body, function(err, userData) {
     if(err) return res.status(400).send(err);
+    userData.email = req.body.email; 
+    console.log("User Data: ", userData);
     User.create(userData, function(err) {
       res.send();
     });
@@ -34,7 +37,7 @@ router.get('/profile', authMiddleware, function(req, res) {
   //// logged in,   req.user
   User.findById(req.user._id, function(err, user) {
     // res.send(user);
-    res.render('profile', { useruid: user.uid, user_id: user._id, pokemon: user.pokemon})
+    res.render('profile', { useruid: user.uid, user_id: user._id, pokemon: user.pokemon, email: user.email})
   });
 });
 

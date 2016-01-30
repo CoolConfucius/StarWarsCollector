@@ -19,14 +19,19 @@ html
             li
               a(href='/') Home
           ul.nav.navbar-nav.navbar-right
-            li
-              a(href='/register') Register
-            li
-              a(href='/login') Login
-            li
-              a(href='/users/logout') Logout
-            li
-              a(href='/users/profile') Profile
+            if !user
+              li
+                a(href='/register') Register
+              li
+                a(href='/login') Login
+            else
+              console.log(user, "USER") 
+              li
+                a(href='/users/profile')= 'Logged in as ' + user.email
+              li
+                a(href='/users/logout') Logout
+              li
+                a(href='/users/profile') Profile
 
     .container
       block content

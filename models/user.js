@@ -6,6 +6,7 @@ var JWT_SECRET = process.env.JWT_SECRET;
 
 var userSchema = new mongoose.Schema({
   uid: String,
+  email: String,
   pokemon: [{
     name: String
   }]
@@ -13,9 +14,11 @@ var userSchema = new mongoose.Schema({
 
 // instance method
 userSchema.methods.generateToken = function() {
+    // console.log("Payload this: ", this);
   var payload = {
     uid: this.uid,
-    _id: this._id
+    _id: this._id, 
+    email: this.email
   };
   var token = jwt.encode(payload, JWT_SECRET);
 
