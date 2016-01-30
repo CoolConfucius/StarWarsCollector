@@ -11,3 +11,37 @@ body {
 .btn, .nav, .navbar-brand {
   text-shadow: none;
 }
+
+.jumbotron {
+  background-color: #666;
+}
+
+.swchar {
+  cursor: pointer;
+  font-size: 16px; 
+  text-shadow: 
+    1px 0px 5px #00FFFF, 0px 1px 5px #00FFFF, 
+    2px 1px 5px #00FFFF, 1px 2px 5px #00FFFF,    
+    -1px -0px 5px #00FFFF, -0px -1px 5px #00FFFF, 
+    -2px -1px 5px #00FFFF, -1px -2px 5px #00FFFF
+}
+.swchar:hover {
+  text-decoration: none; 
+  font-size: 20px; 
+  text-shadow: 
+    1px 0px 5px red, 0px 1px 5px red, 
+    2px 1px 5px red, 1px 2px 5px red,    
+    -1px -0px 5px red, -0px -1px 5px red, 
+    -2px -1px 5px red, -1px -2px 5px red
+};
+
+.remove {
+  text-decoration: none; 
+  color: blue;
+}
+
+.remove:hover {
+  text-decoration: none; 
+  font-size: 16px;
+  color: red;
+}

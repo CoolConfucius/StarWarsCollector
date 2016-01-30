@@ -4,15 +4,16 @@ block content
   h1= title
   if state === "people"
     h2= "Page: " + page
-      ul
-        each person in people
-          li
-            a(href='/sw/person/'+person.url.split('/')[5])= person.name
+    ul
+      each person in people
+        li
+          a(href='/sw/person/'+person.url.split('/')[5])= person.name
   
   if state === "person"
-    h1#name= person.name
+    .jumbotron
+      h1#name.text-center= person.name
     h3= "Homeworld: "+homeworld
-    h3 Films stared in: 
+    h3 Films starred in: 
       ul
         each title in films
           li= title

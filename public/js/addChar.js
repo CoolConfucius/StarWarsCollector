@@ -55,7 +55,7 @@ function addCharacter() {
   }
   })
   .success(function(data) {
-    location.replace('/');
+    location.replace('/users/profile');
   })
   .fail(function(err) {
     alert('Error. Check console.');
