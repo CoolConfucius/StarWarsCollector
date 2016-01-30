@@ -41,6 +41,38 @@ router.get('/profile', authMiddleware, function(req, res) {
   });
 });
 
+router.get('/changepassword', authMiddleware, function(req, res) {
+  if (!req.user) { res.render('noauth'); return; };
+  User.findById(req.user._id, function(err, user) {
+    res.render('form', { state: 'changepassword', title: "Change Password", user: req.user})
+  });
+});
+
+router.post('/changepassword', function(req, res, next) {
+  ref.changePassword({
+    email: req.body.email,
+    oldPassword: req.body.password,
+    newPassword: req.body.newpassword
+  }, function(error) {
+    if (error) {
+      switch (error.code) {
+        case "INVALID_PASSWORD":
+          console.log("The specified user account password is incorrect.");
+          break;
+        case "INVALID_USER":
+          console.log("The specified user account does not exist.");
+          break;
+        default:
+          console.log("Error changing password:", error);
+      }
+    } else {
+      console.log("User password changed successfully!");
+    };
+  });
+});
+
+
+
 router.get('/logout', function(req, res, next) {
   res.clearCookie('mytoken').redirect('/');
 });

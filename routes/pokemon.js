@@ -8,6 +8,7 @@ router.use(authMiddleware);
 /* GET home page. */
 router.get('/', function(req, res, next) {
   // show my pokemon
+  
 });
 
 router.post('/', function(req, res, next) {

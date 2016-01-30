@@ -13,10 +13,17 @@ block content
       .form-group
         label(for='password2') Password (again)
         input#password2.password.form-control(type='password', placeholder='Password')
+    if state === 'changepassword'
+      .form-group
+        label(for='newpassword') New Password 
+        input#newpassword.password.form-control(type='password', placeholder='Password')
+
     if state === 'register'
       button.btn.btn-default.register#go(type='submit') Register
-    else
+    else if state === 'login'
       button.btn.btn-default.login#go(type='submit') Login
+    else if state === 'changepassword'
+      button.btn.btn-default.changepassword#go(type='submit') Change Password
 
 block scripts
   script(src="/js/form.js")
