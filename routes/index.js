@@ -24,4 +24,8 @@ router.get('/secret', authMiddleware, function(req, res, next) {
   res.send('Wooo!  Secret stuff!!!');
 });
 
+router.get('/addChar', authMiddleware, function(req, res, next) {
+  res.render('addChar', { title: "Ben's App", user: req.user});
+})
+
 module.exports = router;

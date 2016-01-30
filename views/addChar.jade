@@ -7,6 +7,7 @@ block content
       label(for='text') Text
       input#input.form-control(type='text', placeholder='Text')
     button.btn.btn-default#search(type='submit') Search
+    a.btn.btn-primary(href='/sw/people') SW
 
 
     //- .form-group
@@ -21,9 +22,12 @@ block content
     //- else
     //-   button.btn.btn-default.login#go(type='submit') Login
   #info
+    //- ul
+    //-   each name in body
+    //-     li name.name
 
   button.btn.btn-default#go(type='submit') Add
 
 block scripts
-  script(src="/js/form.js")
+  script(src="/js/addChar.js")
   

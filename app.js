@@ -26,6 +26,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/users', require('./routes/users'));
+app.use('/sw', require('./routes/sw'));
 app.use('/pokemon', require('./routes/pokemon'));
 app.use('/', require('./routes/index'));
 

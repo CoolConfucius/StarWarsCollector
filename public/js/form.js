@@ -21,7 +21,6 @@ $(function() {
 
 function go(e) {
   e.preventDefault();
-console.log("1");
   var email = obj.email.val();
   var password = obj.password.val();
   var password2 = obj.password2.val();
@@ -34,13 +33,10 @@ console.log("1");
 
   if (obj.state === "changepassword") {
     obj.url = '/users/changepassword'; 
-    console.log("2");
   } else {
-    console.log("3");
     obj.url = obj.state === "register" ? '/users/register' : '/users/login'; 
   }
-console.log("4");
-console.log("obj.url", obj.url);
+
   $.post(obj.url, {email: email, password: password, newpassword: newpassword})
   .success(function() {
     location.href = obj.state === "register" ? '/login' : '/';

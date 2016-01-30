@@ -1,0 +1,13 @@
+body {
+  background-color: black;
+  color: black;
+  text-shadow: 
+    1px 0px 5px yellow, 0px 1px 5px yellow, 
+    2px 1px 5px yellow, 1px 2px 5px yellow,    
+    -1px -0px 5px yellow, -0px -1px 5px yellow, 
+    -2px -1px 5px yellow, -1px -2px 5px yellow
+}
+
+.btn, .nav, .navbar-brand {
+  text-shadow: none;
+}
