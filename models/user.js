@@ -9,13 +9,13 @@ var userSchema = new mongoose.Schema({
   email: String,
   swchars: [{
     name: String, 
-    find: String
+    find: String, 
+    _id: String
   }]
 });
 
 // instance method
 userSchema.methods.generateToken = function() {
-    // console.log("Payload this: ", this);
   var payload = {
     uid: this.uid,
     _id: this._id, 

@@ -3,11 +3,6 @@
 var obj = {}; 
 
 $(function() {
-  obj.email = $('#email');
-  obj.password = $('#password');
-  obj.password2 = $('#password2');
-  obj.newpassword = $('#newpassword'); 
-  
   var $go = $('#go');
   
   if ($go.hasClass('changepassword')){
@@ -21,13 +16,13 @@ $(function() {
 
 function go(e) {
   e.preventDefault();
-  var email = obj.email.val();
-  var password = obj.password.val();
-  var password2 = obj.password2.val();
-  var newpassword = obj.newpassword.val();
+  obj.email = $('#email').val();
+  obj.password = $('#password').val();
+  obj.password2 = $('#password2').val();
+  obj.newpassword = $('#newpassword').val();
 
-  if(obj.state === 'register' && password !== password2) {
-    $('.password').val('');
+  if(obj.state === 'register' && obj.password !== obj.password2) {
+    $('#password').val('');
     return alert('Passwords must match.');
   }
 
@@ -37,7 +32,7 @@ function go(e) {
     obj.url = obj.state === "register" ? '/users/register' : '/users/login'; 
   }
 
-  $.post(obj.url, {email: email, password: password, newpassword: newpassword})
+  $.post(obj.url, {email: obj.email, password: obj.password, newpassword: obj.newpassword})
   .success(function() {
     location.href = obj.state === "register" ? '/login' : '/';
   })

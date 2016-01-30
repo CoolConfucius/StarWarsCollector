@@ -78,7 +78,23 @@ router.put('/add', function(req, res) {
   });
 });
 
-
+router.put('/remove', function(req, res) {
+  User.findById(req.user._id, function(err, user) {
+    console.log("Remove req body:", req.body);
+    var splice_index; 
+    user.swchars.forEach(function(entry, index){
+      if (entry._id === req.body._id) {
+        splice_index = index; 
+      };
+    });
+    if (splice_index) {
+      user.swchars.splice(splice_index, 1); 
+    };
+    user.save(function(err, savedUser) {
+      res.status(err ? 400 : 200).send(err || savedUser); 
+    });
+  });
+});
 
 
 
